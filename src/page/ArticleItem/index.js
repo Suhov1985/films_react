@@ -49,14 +49,19 @@ class ArticleItem extends Component{
                             <div className="date">Дата выхода - {data['release_date']}</div>
                             <div className="homepage">Ойициальный сайт - {data['homepage']}</div>
                             <div className="popularity">Популярность - {data['popularity']}</div>
-                            <h3>Описание:</h3>
-                            <div className="desc">{data['overview']}</div>
+                            <div className="desc">
+                                <h3>Описание:</h3>
+                                <p>{data['overview']}</p>
+                            </div>
                         </div>
                         <div className="gallery">
-                            <div className="col">
-                                <img src={img + data['poster_path']} alt="Photo"/>
-                                <img src={img + data['poster_path']} alt="Photo"/>
-                                <img src={img + data['poster_path']} alt="Photo"/>
+                            <div className="row">
+                                <div className="col">
+                                    <img src={img + data['poster_path']} alt="Photo"/>
+                                </div>
+                                <div className="col">
+                                    <img src={img + data['backdrop_path']} alt="Photo"/>
+                                </div>
                             </div>
                         </div>
                     </div>
