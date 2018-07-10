@@ -1,0 +1,97 @@
+.ListBlock{
+    text-align: left;
+}
+.ItemBlock {
+    display: block;
+    position: relative;
+    margin-bottom: 50px;
+    box-shadow: 3px 0 20px rgba(0,0,0,.12);
+    padding-left: 200px;
+    height: 278px;
+    width: 100%;
+}
+.ItemBlock img{
+    width: 100%;
+    height: 278px;
+    max-width: 185px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.list__desc{
+    padding: 10px;
+}
+.list__date{
+    color: #888;
+    font-size: 11px;
+}
+.list__desc-top{
+    position: relative;
+    padding-left: 50px;
+}
+.list__desc-bottom{
+    position: absolute;
+    bottom: 0px;
+    line-height: 40px;
+    font-size: 18px;
+    color: #222;
+}
+.list__desc-bottom a{
+    color: inherit;
+}
+.list__name{
+    color: #222;
+    font-weight: 600;
+    font-size: 1.1em;
+    line-height: 1.1em;
+    margin-bottom: 5px;
+    position: relative;
+    word-wrap: break-word;
+}
+.list__name a{
+    color: inherit;
+}
+.list__desc a:hover{
+    text-decoration: none !important;
+}
+.list__rate {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    background: #fff;
+    border-radius: 100%;
+    font-size: 12px;
+    line-height: 36px;
+    box-shadow: 2px 0px 20px rgba(0,0,0,.3);
+}
+.list__text {
+    word-wrap: break-word;
+    white-space: normal;
+    color: #4d4d4d;
+    font-size: 0.9em;
+    line-height: 1.2em;
+    margin-top: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 85px;
+}
+@media (max-width: 480px) {
+    .ItemBlock {
+        margin-bottom: 30px;
+        padding: 10px 10px 30px;
+        height: auto;
+        width: 100%;
+    }
+    .ItemBlock img{
+        width: 100%;
+        height: 278px;
+        max-width: 185px;
+        position: relative;
+        margin: 0px auto 20px;
+        display: block;
+    }
+
+}

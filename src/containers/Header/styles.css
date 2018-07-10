@@ -1,0 +1,16 @@
+.header {
+    text-align: left;
+    min-height: 100px;
+    background: #dadada;
+    padding: 0;
+}
+.logo{
+    width: 100px;
+    display: inline-block;
+    line-height: 100px;
+    vertical-align: middle;
+}
+.search{
+    background: #dadada;
+    padding: 10px 0px;
+}
