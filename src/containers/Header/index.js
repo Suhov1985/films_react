@@ -3,6 +3,7 @@ import Autosuggest from 'react-autosuggest'
 import {Link} from 'react-router-dom'
 
 import './styles.css'
+import {connect} from "react-redux"
 
 let languages = []
 
@@ -84,7 +85,6 @@ class Header extends Component{
                 <div className="header">
                     <div className="container">
                         <div className="">
-
                             <a href="/" className="logo"><img src="https://www.themoviedb.org/static_cache/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg" alt="logo"/></a>
                         </div>
                     </div>
@@ -107,4 +107,9 @@ class Header extends Component{
     }
 }
 
-export default Header
+const MapStateToProps = state => ({
+    movie: state.movie
+})
+const MapActionToProps = dispatch => ({})
+
+export default connect(MapStateToProps, MapActionToProps)(Header)

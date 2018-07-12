@@ -1,20 +1,21 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 
 import Loader from '../../component/Loader'
-import {articleItem} from '../../component/api/index'
+// import {articleItem} from '../../component/api/index'
 
 import './styles.css'
 
 class ArticleItem extends Component{
     state = {
         data: {},
-        img: "https://image.tmdb.org/t/p/w185_and_h278_bestv2",
         activeLoader: false
     }
     componentWillMount() {
         this.setState({activeLoader: true})
         const {match: {params}} = this.props
-        articleItem(params.id)
+        const {lang, articleItem} = this.props.movie
+        articleItem(params.id, lang)
             .then(res => {
                 return res.json()
             })
@@ -27,7 +28,8 @@ class ArticleItem extends Component{
             })
     }
     render(){
-        const {data, img} = this.state
+        const {data} = this.state
+        const {img} = this.props.movie
         return (
             <div className={'container'}>
                 {
@@ -37,7 +39,7 @@ class ArticleItem extends Component{
                     <div className="jumbotron card">
                         <div className="col-md-12">
                             <div className='big-img'>
-                                <img src={img + data['backdrop_path']} alt="Photo"/>
+                                <img src={img + data['backdrop_path']} alt=""/>
                             </div>
                         </div>
                         <div className="col-md-12">
@@ -57,10 +59,10 @@ class ArticleItem extends Component{
                         <div className="gallery">
                             <div className="row">
                                 <div className="col">
-                                    <img src={img + data['poster_path']} alt="Photo"/>
+                                    <img src={img + data['poster_path']} alt=""/>
                                 </div>
                                 <div className="col">
-                                    <img src={img + data['backdrop_path']} alt="Photo"/>
+                                    <img src={img + data['backdrop_path']} alt=""/>
                                 </div>
                             </div>
                         </div>
@@ -71,4 +73,9 @@ class ArticleItem extends Component{
     }
 }
 
-export default ArticleItem
+const MapStateToProps = state => ({
+    movie: state.movie
+})
+const MapActionToProps = dispatch => ({})
+
+export default connect(MapStateToProps, MapActionToProps)(ArticleItem)

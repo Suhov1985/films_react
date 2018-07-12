@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 import Loader from '../../component/Loader'
 
 import './styles.css'
@@ -7,27 +8,28 @@ import './styles.css'
 class BlogList extends Component{
     state = {
         data: [],
-        img: "https://image.tmdb.org/t/p/w185_and_h278_bestv2",
         activeLoader: false
     }
     componentWillMount () {
         this.setState({activeLoader: true})
     }
     componentDidMount () {
-        fetch('https://api.themoviedb.org/3/movie/popular?api_key=24f501845f94ecdd83b2fe94f252059a&language=ru-Ru&page=1',
-            {
-                method: "GET"
-            }).then(res => {
+        const {lang, blogItem} = this.props.movie
+        blogItem(lang)
+            .then(res => {
                 return res.json()
-        }).then(response => {
-            this.setState({
-                data: response.results,
-                activeLoader: false
             })
-        })
+            .then(response => {
+                this.setState({
+                    data: response.results,
+                    activeLoader: false
+                })
+
+            })
     }
     render () {
-        const {data, img} = this.state
+        const {data} = this.state
+        const {img} = this.props.movie
         return (
             <div className="container">
                 <div className="ListBlock row">
@@ -77,4 +79,11 @@ class BlogList extends Component{
     }
 }
 
-export default BlogList
+const MapStateToProps = state => ({
+    movie: state.movie
+})
+const MapActionToProps = dispatch => ({
+
+})
+
+export default connect(MapStateToProps, MapActionToProps)(BlogList)
